@@ -1,0 +1,247 @@
+//STUDENT DATA MANAGEMENT
+
+#include<iostream>
+using namespace std;
+string a1[50],a2[50],a3[50],a4[50],a5[50];
+int total=0;
+void enterdata()
+{
+      int size;
+      cout<<"Enter the size : ";
+      cin>>size;
+      if(total==0)
+      {
+            total=size+total;
+              for(int i=0;i<size;i++)
+              {
+                      cout<<"\nENTER DETAILS OF STUDENT: "<<i+1<<endl<<endl;
+                      cout<<"Enter name of student: ";
+                      cin>>a1[i];
+                      cout<<"Enter roll no. : ";
+                      cin>>a2[i];
+                      cout<<"Enter class: ";
+                      cin>>a3[i];
+                      cout<<"Enter contact no.: ";
+                      cin>>a4[i];
+                      cout<<"Enter course:";
+                      cin>>a5[i];
+              }
+      } 
+      else
+      {
+            for(int i=total;i<size+total;i++)
+              {      cout<<"\nENTER DETAILS OF STUDENT: "<<i+1<<endl;
+                      cout<<"Enter name :";
+                      cin>>a1[i];
+                      cout<<"Enter roll no.:";
+                      cin>>a2[i];
+                      cout<<"Enter class :";
+                      cin>>a3[i];
+                      cout<<"Enter contact no.:";
+                      cin>>a4[i];
+                      cout<<"Enter course:";
+                      cin>>a5[i];
+              } 
+                total=size+total; 
+      }  
+    
+}
+void showdata()
+    
+{
+    if(total==0)
+
+	{
+
+		cout<<"No data is entered"<<endl;
+
+	}
+
+	else{
+        for(int i=0;i<total;i++)
+       {
+          cout<<"\nDETAILS OF STUDENT's ARE: "<<i+1<<endl;
+                      cout<<"name: "<<a1[i]<<endl;
+                      
+                      cout<<"roll no: "<<a2[i]<<endl;
+                     
+                      cout<<"class: "<<a3[i]<<endl;
+                      
+                      cout<<"contact: "<<a4[i]<<endl;
+                      
+                      cout<<"course: "<<a5[i]<<endl;
+                      
+       }
+  
+}
+}
+void searchdata()
+{
+        if(total==0)
+
+	{
+
+		cout<<"No data is entered"<<endl;
+
+	}
+	
+    
+	else
+	{
+              string rollno;
+              cout<<"Enter the rollno. of student u want to search: ";
+              cin>>rollno;
+              for(int i=0;i<total;i++)
+        {
+                      if(rollno==a2[i])
+                {
+                cout<<"name:"<<a1[i]<<endl;
+                      
+                cout<<"roll no.:"<<a2[i]<<endl;
+                     
+                cout<<"class:"<<a3[i]<<endl;
+                      
+                cout<<"contact no.:"<<a4[i]<<endl;
+                      
+                cout<<"course :"<<a5[i]<<endl;
+                      
+              }
+              
+
+        }
+}
+}
+void updatedata()
+{          
+    if(total==0)
+
+	{
+
+		cout<<"No data is entered"<<endl;
+
+	}
+
+	else{
+         string rollno;
+        cout<<"Enter the rollno u want to update :";
+        cin>>rollno;
+        for(int i=0;i<total;i++)
+        {
+                if(rollno==a2[i])
+          {
+                cout<<"\nPrevious Data"<<endl;
+                cout<<"Data of Student "<<i+1<<endl;
+                cout<<"name of student:"<<a1[i]<<endl;
+                      
+                cout<<"roll no. of student:"<<a2[i]<<endl;
+                     
+                cout<<"class of student:"<<a3[i]<<endl;
+                      
+                cout<<"contact no. of student:"<<a4[i]<<endl;
+                      
+                cout<<"course of student:"<<a5[i]<<endl;
+                cout<<"\nEnter the new data of student:"<<endl;
+                cout<<"name of student:";
+                      cin>>a1[i];
+                cout<<"roll no. of student:";
+                      cin>>a2[i];
+                cout<<"class of student:";
+                      cin>>a3[i];
+                cout<<"contact no. of student:";
+                      cin>>a4[i];
+                cout<<"course of student:";
+                      cin>>a5[i];
+
+              
+
+          }
+        }
+}
+}
+void deletedata()
+{ 
+    if(total==0)
+
+	{
+
+		cout<<"No data is entered"<<endl;
+
+	}
+
+	else{
+            
+         int n;
+         cout<<"Press 1 for delete all data: "<<endl;
+         cout<<"Press 2 for delete specific data: "<<endl;
+         cin>>n;
+         if(n==1)
+         {
+                 total=0;
+                 cout<<"All data deleted!"<<endl;
+
+         }
+         else if(n==2)
+         {    string rollno;
+         cout<<"Enter the roll no u want to delete data: ";
+         cin>>rollno;
+               for(int i=0;i<total;i++)
+               {
+                       if(rollno==a2[i])
+                       {
+                          for(int j=i;j<total;j++)
+                          {
+                                  a1[j]=a1[j+1];
+                                  a2[j]=a2[j+1];
+                                  a3[j]=a3[j+1];
+                                  a4[j]=a4[j+1];
+                                  a5[j]=a5[j+1];
+                          }     
+                          total--;
+                          cout<<"Data is deleted!!!"<<endl;
+                       }
+               }
+         }
+         else
+         {
+             cout<<"!!INVALID INPUT!!";
+         }
+}
+}
+ int main()
+ {
+     int num;
+     while(true)
+     {
+         cout<<"\nPress 1 for Enter data"<<endl;
+         cout<<"Press 2 for show data"<<endl;
+         cout<<"Press 3 for search data"<<endl;
+         cout<<"Press 4 for update data"<<endl;
+         cout<<"Press 5 for delete data"<<endl;
+         cout<<"Press 6 for exit"<<endl;
+         cin>>num;
+         switch(num)
+         {
+            case 1: 
+                    enterdata();
+                    break;
+            case 2:
+                    showdata();
+                    break;
+            case 3: 
+                    searchdata();
+                    break;
+            case 4: 
+                    updatedata();
+                    break;
+            case 5: 
+                    deletedata();
+                    break;
+            case 6: 
+                    exit(0);
+                    break;
+            default:
+                    cout<<"Invalid number"<<endl;
+                    break;
+         }
+     }
+ }
